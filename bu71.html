@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="loginForm">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <h3 id =tbloi2></h3>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <h3 id =tbloi1></h3>
+        <br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+ 
+
+    <script>
+        
+      
+        function signup(){
+            let infor= localStorage.getItem("infor")?JSON.parse(localStorage.getItem("infor")):[]
+            
+            let name= document.getElementById('username1').value
+            let pass= document.getElementById('password1').value
+            infor.push({
+                name: name,
+                pass:pass
+            })
+           
+         localStorage.setItem("infor",JSON.stringify(infor))
+             
+        }
+        function login() {
+            let x = document.getElementById('username').value;
+    let y = document.getElementById('password').value;
+    let hello1 = JSON.parse(localStorage.getItem("infor"));
+
+    // Set a flag to check if alert has been shown
+    let alertShown = false;
+
+    for (let i = 0; i < hello1.length; i++) {
+        let a = hello1[i].name;
+        let b = hello1[i].pass;
+
+        // Check if the username and password are correct (for demo purposes)
+        if (a === x && b === y && !alertShown) {
+            // Store user information in LocalStorage
+            localStorage.setItem('username', x);
+
+            window.location.href = 'https://www.youtube.com';
+            alert('Login successful!');
+
+            // Set the flag to true to indicate that alert has been shown
+            alertShown = true;
+        }
+        if (a==x){
+                document.getElementById("tbloi1").innerHTML="sai pass"
+            }
+            if (b==y){
+                document.getElementById("tbloi2").innerHTML="sai ten"
+            } 
+    }
+            
+          
+        }
+    
+        
+
+        // Check if the user is already logged in
+        window.onload = function () {
+            var storedUsername = localStorage.getItem('username');
+            if (storedUsername) {
+               
+                
+            }
+        };
+    </script>
+
+</body>
+</html>
